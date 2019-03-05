@@ -13,4 +13,10 @@ def find_indices(input_list, n):
     :param n: целевая сумма
     :return: tuple из двух индексов или None
     '''
-    raise NotImplementedError
+    lookup = {}
+    for index in range(0, len(input_list)):
+        if n - input_list[index] in lookup:
+            return (lookup[n - input_list[index]], index)
+        elif input_list[index] not in lookup:
+            lookup[input_list[index]] = index
+    return None
