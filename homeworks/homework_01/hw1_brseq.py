@@ -20,9 +20,11 @@ def is_bracket_correct(input_string):
         if len(stack) == 0:
             return False
         openingBracket = stack.pop()
-        if not (openingBracket == '(' and elem == ')' or openingBracket
-                == '[' and elem == ']' or openingBracket == '{' and elem
-                == '}'):
+        if (not (
+                (openingBracket == '(' and elem == ')') or
+                (openingBracket == '[' and elem == ']') or
+                (openingBracket == '{' and elem == '}')
+                )):
             return False
     if len(stack) != 0:
         return False
