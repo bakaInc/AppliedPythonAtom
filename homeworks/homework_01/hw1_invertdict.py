@@ -16,8 +16,8 @@ def invert(value):
     else:
         result_list.append(value)
     return result_list
-  
-    
+
+
 def invert_dict(source_dict):
     '''
     Функция которая разворачивает словарь, т.е.
