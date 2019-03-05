@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+
 def invert(value):
     """
     Функция разворачивающая вложенные
@@ -15,6 +16,7 @@ def invert(value):
     else:
         result_list.append(value)
     return result_list
+  
     
 def invert_dict(source_dict):
     '''
