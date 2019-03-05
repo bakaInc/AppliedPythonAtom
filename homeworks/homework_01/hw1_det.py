@@ -26,7 +26,7 @@ def calculate_determinant(list_of_lists):
                     minors[k].append(list_of_lists[k + 1][m])
 
         det += sign * list_of_lists[i][j] * \
-                    (calculate_determinant(minors) or 1)
+               (calculate_determinant(minors) or 1)
         sign = -sign
 
     return det
