@@ -9,6 +9,7 @@
 :return: результат выполнение операции, если строка валидная - иначе None
 '''
 
+
 def splitArr(arr):
     arr = arr.split()
     delimeters = ['(', ')', '+', '-', '*', '/']
@@ -27,6 +28,7 @@ def splitArr(arr):
         newArr.append(res)
     newArr = [value for value in newArr if value != '']
     return newArr
+
 
 def advanced_calculator(expr):
     res = []
@@ -68,12 +70,15 @@ def advanced_calculator(expr):
             d2 = int(opers.pop())
             d1 = int(opers.pop())
 
-            if el == '+': opers.append(d1 + d2)
-            if el == '-': opers.append(d1 - d2)
-            if el == '*': opers.append(d1 * d2)
-            if el == '/': opers.append(d1 / d2)
+            if el == '+': 
+                opers.append(d1 + d2)
+            if el == '-': 
+                opers.append(d1 - d2)
+            if el == '*': 
+                opers.append(d1 * d2)
+            if el == '/': 
+                opers.append(d1 / d2)
     if len(opers) == 1:
         return opers[0]
     else:
         return None
-
