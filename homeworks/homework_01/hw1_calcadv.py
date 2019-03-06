@@ -37,7 +37,6 @@ def advanced_calculator(expr):
 
     expr = splitArr(expr)
 
-    # FORM RES, OPERS
     for ch in expr:
         if ch.isalpha():
             return None
@@ -58,13 +57,11 @@ def advanced_calculator(expr):
                 opers.append(ch)
         else:
             opers.append(ch)
-    if len(res)<1:
+    if len(res) < 1:
         return None
     while opers:
         res.append(opers.pop())
 
-
-    # CALCULATIONS
     for el in res:
         if el.isdigit():
             opers.append(el)
