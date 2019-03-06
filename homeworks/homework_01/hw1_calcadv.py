@@ -122,8 +122,8 @@ def advanced_calculator(input_string):
             if el.isdigit():
                 opers.append(el)
             else:
-                d2 = int(opers.pop())
-                d1 = int(opers.pop())
+                d2 = float(opers.pop())
+                d1 = float(opers.pop())
 
                 if el == '+':
                     opers.append(d1 + d2)
