@@ -87,7 +87,6 @@ def advanced_calculator(input_string):
     operators = {'+': 2, '-': 2, '*': 1, '/': 1}
 
     input_string = splitArr(input_string)
-    print(input_string)
     old = ""
     try:
         for ch in input_string:
