@@ -50,7 +50,7 @@ def advanced_calculator(input_string):
             while len(stack) > 0 and stack[len(stack) - 1] is not "(":
                 if stack[len(stack) - 1] is '*' or input_string[0] is '+' \
                    or stack[len(stack) - 1] is '/' or input_string[0] is '-':
-                   output_list.append(stack.pop())
+                    output_list.append(stack.pop())
                 else:
                     break
             stack.append(input_string[0])
