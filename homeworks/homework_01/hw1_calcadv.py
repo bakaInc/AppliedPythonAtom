@@ -21,11 +21,7 @@ def is_bracket_correct(input_string):
         if len(stack) == 0:
             return False
         openingBracket = stack.pop()
-        if (not (
-                (openingBracket == '(' and elem == ')') or
-                (openingBracket == '[' and elem == ']') or
-                (openingBracket == '{' and elem == '}')
-                )):
+        if not (openingBracket == '(' and elem == ')'):
             return False
     if len(stack) != 0:
         return False
@@ -93,10 +89,10 @@ def advanced_calculator(input_string):
 
     input_string = splitArr(input_string)
 
-    old=""
+    old = ""
     try:
         for ch in input_string:
-            tt=ch
+            tt = ch
             if ch.isalpha():
                 return None
             if ch.isdigit():
@@ -116,7 +112,7 @@ def advanced_calculator(input_string):
                     opers.append(ch)
             else:
                 opers.append(ch)
-            if old is ')' and tt.isdigit():
+            if (old is ')' and tt.isdigit()) or (old.isdigit() and tt is '('):
                 return None
             old = tt
         if len(res) < 1:
