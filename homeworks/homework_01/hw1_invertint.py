@@ -9,5 +9,7 @@
 '''
 
 def reverse(n):
-    return int(str(n)[::-1])
+    return (lambda:int(str(n)[::-1]),lambda: -1*int(str(n)[:0:-1]))[n < 0]()
+
+
 
