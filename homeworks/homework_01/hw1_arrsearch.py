@@ -13,10 +13,12 @@ def find_indices(arr, x):
     :param n: целевая сумма
     :return: tuple из двух индексов или None
     '''
-
-    l = len(arr)
+    
+    le = len(arr)
+    if le < 2:
+        return None
     left = 0
-    right = l - 1
+    right = le - 1
     arr.sort()
 
     while (left != right):
