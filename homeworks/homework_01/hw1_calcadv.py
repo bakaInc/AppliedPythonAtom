@@ -9,6 +9,26 @@
 :return: результат выполнение операции, если строка валидная - иначе None
 '''
 
+def is_bracket_correct(input_string):
+    stack = []
+    for elem in input_string:
+        if elem not in set('({[)}]'):
+            continue
+        if elem in set('({['):
+            stack.append(elem)
+            continue
+        if len(stack) == 0:
+            return False
+        openingBracket = stack.pop()
+        if (not (
+                (openingBracket == '(' and elem == ')') or
+                (openingBracket == '[' and elem == ']') or
+                (openingBracket == '{' and elem == '}')
+                )):
+            return False
+    if len(stack) != 0:
+        return False
+    return True
 
 def splitArr(arr):
     arr = arr.split()
@@ -30,54 +50,90 @@ def splitArr(arr):
     return newArr
 
 
-def advanced_calculator(expr):
+def advanced_calculator(input_string):
+    if not is_bracket_correct(input_string):
+        return None
+    for i in range(10):
+        input_string = input_string.replace(str(i) + " ", str(i) + "|")
+    while " " in input_string:
+        input_string = input_string.replace(" ", "")
+    while "\t" in input_string:
+        input_string = input_string.replace("\t", "")
+    while "--" in input_string:
+        input_string = input_string.replace("--", "+")
+    while "++" in input_string:
+        input_string = input_string.replace("++", "+")
+    while "+-" in input_string:
+        input_string = input_string.replace("+-", "-")
+    while "**" in input_string:
+        return None
+    while "//" in input_string:
+        return None
+    while "(-" in input_string:
+        input_string = input_string.replace("(-", "(0-")
+    while "/-" in input_string:
+        input_string = input_string.replace("/-", "*(0-1)/")
+    while "*-" in input_string:
+        input_string = input_string.replace("*-", "*(0-1)*")
+    while "*+" in input_string:
+        input_string = input_string.replace("*+", "*(0+1)*")
+
+    if len(input_string) > 0:
+        if input_string[0] is "-" or input_string[0] is "+":
+            input_string = "0" + input_string
+        if input_string[0] is "*" or input_string[0] is "/":
+            return None
+
     res = []
     opers = []
     operators = {'+': 2, '-': 2, '*': 1, '/': 1}
 
-    expr = splitArr(expr)
+    input_string = splitArr(input_string)
 
-    for ch in expr:
-        if ch.isalpha():
-            return None
-        if ch.isdigit():
-            res.append(ch)
-        elif ch == '(':
-            opers.append(ch)
-        elif ch == ')':
-            while opers[-1] != '(':
-                res.append(opers.pop())
-            opers.pop()
-        elif opers and opers[-1] != '(':
-            print(opers)
-            if operators.get(opers[-1]) <= operators.get(ch):
-                res.append(opers.pop())
+    try:
+        for ch in input_string:
+            if ch.isalpha():
+                return None
+            if ch.isdigit():
+                res.append(ch)
+            elif ch == '(':
                 opers.append(ch)
+            elif ch == ')':
+                while opers[-1] != '(':
+                    res.append(opers.pop())
+                opers.pop()
+            elif opers and opers[-1] != '(':
+                print(opers)
+                if operators.get(opers[-1]) <= operators.get(ch):
+                    res.append(opers.pop())
+                    opers.append(ch)
+                else:
+                    opers.append(ch)
             else:
                 opers.append(ch)
-        else:
-            opers.append(ch)
-    if len(res) < 1:
+        if len(res) < 1:
+            return None
+        while opers:
+            res.append(opers.pop())
+
+        for el in res:
+            if el.isdigit():
+                opers.append(el)
+            else:
+                d2 = int(opers.pop())
+                d1 = int(opers.pop())
+
+                if el == '+':
+                    opers.append(d1 + d2)
+                if el == '-':
+                    opers.append(d1 - d2)
+                if el == '*':
+                    opers.append(d1 * d2)
+                if el == '/':
+                    opers.append(d1 / d2)
+    except:
         return None
-    while opers:
-        res.append(opers.pop())
-
-    for el in res:
-        if el.isdigit():
-            opers.append(el)
-        else:
-            d2 = int(opers.pop())
-            d1 = int(opers.pop())
-
-            if el == '+':
-                opers.append(d1 + d2)
-            if el == '-':
-                opers.append(d1 - d2)
-            if el == '*':
-                opers.append(d1 * d2)
-            if el == '/':
-                opers.append(d1 / d2)
     if len(opers) == 1:
-        return opers[0]
+        return int(opers[0])
     else:
         return None
