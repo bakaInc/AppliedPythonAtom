@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
 '''
 Метод проверяющий является ли поданная скобочная
 последовательность правильной (скобки открываются и закрываются)
@@ -8,6 +7,7 @@
 :param input_string: строка, содержащая 6 типов скобок (,),[,],{,}
 :return: True or False
 '''
+
 
 def is_bracket_correct(input_string):
     stack = []
@@ -29,4 +29,3 @@ def is_bracket_correct(input_string):
     if len(stack) != 0:
         return False
     return True
-
