@@ -12,35 +12,35 @@ def advanced_calculator(input_string):
     '''
     for i in range(10):
         input_string = input_string.replace(str(i) + " ", str(i) + "|")
-    while "*-" in input_string:
-        input_string = input_string.replace("*-", "*(0-1)*")
-    while "++" in input_string:
-        input_string = input_string.replace("++", "+")
-    while "+-" in input_string:
-        input_string = input_string.replace("+-", "-")
+    while " " in input_string:
+        input_string = input_string.replace(" ", "")
     while "\t" in input_string:
         input_string = input_string.replace("\t", "")
     while "--" in input_string:
         input_string = input_string.replace("--", "+")
+    while "++" in input_string:
+        input_string = input_string.replace("++", "+")
+    while "+-" in input_string:
+        input_string = input_string.replace("+-", "-")
     while "(-" in input_string:
         input_string = input_string.replace("(-", "(0-")
     while "/-" in input_string:
         input_string = input_string.replace("/-", "*(0-1)/")
-    while " " in input_string:
-        input_string = input_string.replace(" ", "")
+    while "*-" in input_string:
+        input_string = input_string.replace("*-", "*(0-1)*")
     if len(input_string) > 0 and (input_string[0] is
-                                  "+" or input_string[0] is "-"):
+                                  "-" or input_string[0] is "+"):
         input_string = "0" + input_string
     elem = ""
     output_list = []
     stack = []
 
-    def is_ops(operator):
-        return (operator is "*" or operator is "/" or
-                operator is "-" or operator is "+")
+    def is_op(operator):
+        return (operator is "+" or operator is "-" or
+                operator is "/" or operator is "*")
 
     while len(input_string) > 0:
-        if is_ops(input_string[0]):
+        if is_op(input_string[0]):
             if len(elem) > 0:
                 try:
                     output_list.append(float(elem))
@@ -49,7 +49,7 @@ def advanced_calculator(input_string):
                     return None
             while len(stack) > 0 and stack[len(stack) - 1] is not "(":
                 if (stack[len(stack) - 1] is "*" or input_string[0] is "+" or
-                        stack[len(stack) - 1] is "/" or input_string[0] is "-"):
+                    stack[len(stack) - 1] is "/" or input_string[0] is "-"):
                     output_list.append(stack.pop())
                 else:
                     break
