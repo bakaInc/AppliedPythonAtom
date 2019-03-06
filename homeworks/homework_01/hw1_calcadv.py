@@ -9,6 +9,7 @@
 :return: результат выполнение операции, если строка валидная - иначе None
 '''
 
+
 def is_bracket_correct(input_string):
     stack = []
     for elem in input_string:
@@ -30,6 +31,7 @@ def is_bracket_correct(input_string):
         return False
     return True
 
+
 def splitArr(arr):
     arr = arr.split()
     delimeters = ['(', ')', '+', '-', '*', '/']
@@ -47,6 +49,7 @@ def splitArr(arr):
                 res = ""
         newArr.append(res)
     newArr = [value for value in newArr if value != '']
+    print(newArr)
     return newArr
 
 
@@ -90,8 +93,10 @@ def advanced_calculator(input_string):
 
     input_string = splitArr(input_string)
 
+    old=""
     try:
         for ch in input_string:
+            tt=ch
             if ch.isalpha():
                 return None
             if ch.isdigit():
@@ -111,6 +116,9 @@ def advanced_calculator(input_string):
                     opers.append(ch)
             else:
                 opers.append(ch)
+            if old is ')' and tt.isdigit():
+                return None
+            old = tt
         if len(res) < 1:
             return None
         while opers:
