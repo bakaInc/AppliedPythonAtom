@@ -35,11 +35,11 @@ def advanced_calculator(input_string):
     output_list = []
     stack = []
 
-     def is_ops(operator):
+    def is_ops(operator):
         return (operator is "*" or operator is "/" or
                 operator is "-" or operator is "+")
 
-     while len(input_string) > 0:
+    while len(input_string) > 0:
         if is_ops(input_string[0]):
             if len(elem) > 0:
                 try:
