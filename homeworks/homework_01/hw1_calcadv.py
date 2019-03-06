@@ -58,9 +58,11 @@ def advanced_calculator(expr):
                 opers.append(ch)
         else:
             opers.append(ch)
-
+    if len(res)<1:
+        return None
     while opers:
         res.append(opers.pop())
+
 
     # CALCULATIONS
     for el in res:
@@ -70,13 +72,13 @@ def advanced_calculator(expr):
             d2 = int(opers.pop())
             d1 = int(opers.pop())
 
-            if el == '+': 
+            if el == '+':
                 opers.append(d1 + d2)
-            if el == '-': 
+            if el == '-':
                 opers.append(d1 - d2)
-            if el == '*': 
+            if el == '*':
                 opers.append(d1 * d2)
-            if el == '/': 
+            if el == '/':
                 opers.append(d1 / d2)
     if len(opers) == 1:
         return opers[0]
