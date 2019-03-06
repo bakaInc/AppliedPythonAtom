@@ -8,12 +8,8 @@ False иначе
 '''
 
 
-def reverse(n):
-    return (lambda: int(str(n)[::-1]), lambda: -1*int(str(n)[:0:-1]))[n < 0]()
-
-
 def check_palindrom(x):
-    if x == reverse(x):
+    if x == x[::-1]:
         return True
     else:
         return False
