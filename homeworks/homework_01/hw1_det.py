@@ -10,8 +10,9 @@ None
 :return: значение определителя или None
 '''
 
+
 def calculate_determinant(list_of_lists):
-    det=0
+    det = 0
     x = len(list_of_lists)
     sign = 1
     ind = 0
