@@ -45,7 +45,6 @@ def splitArr(arr):
                 res = ""
         newArr.append(res)
     newArr = [value for value in newArr if value != '']
-    print(newArr)
     return newArr
 
 
@@ -88,7 +87,7 @@ def advanced_calculator(input_string):
     operators = {'+': 2, '-': 2, '*': 1, '/': 1}
 
     input_string = splitArr(input_string)
-
+    print(input_string)
     old = ""
     try:
         for ch in input_string:
@@ -104,7 +103,6 @@ def advanced_calculator(input_string):
                     res.append(opers.pop())
                 opers.pop()
             elif opers and opers[-1] != '(':
-                print(opers)
                 if operators.get(opers[-1]) <= operators.get(ch):
                     res.append(opers.pop())
                     opers.append(ch)
