@@ -8,6 +8,7 @@
 :return: new_dict: dict
 '''
 
+
 def invertRec(value):
     res = []
     if isinstance(value, list) or isinstance(value, set):
@@ -16,6 +17,7 @@ def invertRec(value):
     else:
         res.append(value)
     return res
+
 
 def invert_dict(source_dict):
     if not isinstance(source_dict, dict):
