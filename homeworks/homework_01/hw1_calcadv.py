@@ -11,7 +11,6 @@
 
 
 def is_bracket_correct(input_string):
-    raise NotImplementedError
     stack = []
     for elem in input_string:
         if elem not in set('({[)}]'):
@@ -50,6 +49,7 @@ def splitArr(arr):
 
 
 def advanced_calculator(input_string):
+    raise NotImplementedError #########
     if not is_bracket_correct(input_string):
         return None
 
