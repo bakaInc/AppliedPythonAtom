@@ -147,7 +147,7 @@ def advanced_calculator(input_string):
                 if el == '/':
                     opers.append(d1 / d2)
 
-    except :
+    except:
         return None
 
     if len(opers) == 1:
