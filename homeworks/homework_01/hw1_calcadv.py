@@ -11,6 +11,7 @@
 
 
 def is_bracket_correct(input_string):
+    raise NotImplementedError
     stack = []
     for elem in input_string:
         if elem not in set('({[)}]'):
