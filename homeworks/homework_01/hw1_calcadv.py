@@ -37,7 +37,7 @@ def splitArr(arr):
     for tmp in arr:
         res = ""
         for ch in tmp:
-            if ch.isdigit() or ch.isalpha():
+            if ch.isdigit() or ch.isalpha() or ch is ".":
                 res += ch
             elif ch in delimeters:
                 newArr.append(res)
@@ -51,14 +51,26 @@ def splitArr(arr):
 def advanced_calculator(input_string):
     if not is_bracket_correct(input_string):
         return None
-    for i in range(10):
-        input_string = input_string.replace(str(i) + " ", str(i) + "|")
-    while " " in input_string:
-        input_string = input_string.replace(" ", "")
-    while "\t" in input_string:
-        input_string = input_string.replace("\t", "")
+
+    while " -" in input_string:
+        input_string = input_string.replace(" -", "-")
+    while " +" in input_string:
+        input_string = input_string.replace(" +", "+")
+    while " /" in input_string:
+        input_string = input_string.replace(" *", "*")
+    while " /" in input_string:
+        input_string = input_string.replace(" /", "/")
+
+    while "- " in input_string:
+        input_string = input_string.replace("- ", "-")
+    while "+ " in input_string:
+        input_string = input_string.replace("+ ", "+")
+    while "* " in input_string:
+        input_string = input_string.replace("* ", "*")
+    while "/ " in input_string:
+        input_string = input_string.replace("/ ", "/")
     while "--" in input_string:
-        input_string = input_string.replace("--", "+")
+        input_string = input_string.replace("--", "-")
     while "++" in input_string:
         input_string = input_string.replace("++", "+")
     while "+-" in input_string:
@@ -101,7 +113,8 @@ def advanced_calculator(input_string):
                 while opers[-1] != '(':
                     res.append(opers.pop())
                 opers.pop()
-            elif opers and opers[-1] != '(':
+            elif opers \
+                    and opers[-1] != '(':
                 if operators.get(opers[-1]) <= operators.get(ch):
                     res.append(opers.pop())
                     opers.append(ch)
@@ -111,6 +124,7 @@ def advanced_calculator(input_string):
                 opers.append(ch)
             if (old is ')' and tt.isdigit()) or (old.isdigit() and tt is '('):
                 return None
+
             old = tt
         if len(res) < 1:
             return None
@@ -132,9 +146,11 @@ def advanced_calculator(input_string):
                     opers.append(d1 * d2)
                 if el == '/':
                     opers.append(d1 / d2)
-    except:
+
+    except :
         return None
+
     if len(opers) == 1:
-        return int(opers[0])
+        return float(opers[0])
     else:
         return None
