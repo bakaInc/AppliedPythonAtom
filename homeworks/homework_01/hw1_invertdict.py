@@ -2,19 +2,21 @@
 # coding: utf-8
 
 '''
-Функция которая разворачивает словарь, т.е. каждому значению ставит в соответствие ключ.
+Функция которая разворачивает словарь
+, т.е. каждому значению ставит в соответствие ключ.
 :param source_dict: dict
 :return: new_dict: dict
 '''
 
-def invert(value):
-    result_list = []
+
+def invertRec(value):
+    res = []
     if isinstance(value, list) or isinstance(value, set):
-        for i in value:
-            result_list += invert(i)
+        for ind in value:
+            res += invertRec(ind)
     else:
-        result_list.append(value)
-    return result_list
+        res.append(value)
+    return res
 
 
 def invert_dict(source_dict):
@@ -22,13 +24,13 @@ def invert_dict(source_dict):
         return None
     new_dict = {}
     for key, value in source_dict.items():
-        for i in invert(value):
-            if i in new_dict:
-                if isinstance(new_dict[i], list):
-                    new_dict[i].append(key)
+        for ind in invertRec(value):
+            if ind in new_dict:
+                if isinstance(new_dict[ind], list):
+                    new_dict[ind].append(key)
                 else:
-                    item = new_dict.get(i)
-                    new_dict[i] = [item, key]
+                    item = new_dict.get(ind)
+                    new_dict[ind] = [item, key]
             else:
-                new_dict[i] = key
+                new_dict[ind] = key
     return new_dict
