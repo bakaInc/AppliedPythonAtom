@@ -50,7 +50,6 @@ def splitArr(arr):
 
 def advanced_calculator(input_string):
     raise NotImplementedError
-    
     if not is_bracket_correct(input_string):
         return None
 
@@ -95,7 +94,6 @@ def advanced_calculator(input_string):
             input_string = "0" + input_string
         if input_string[0] is "*" or input_string[0] is "/":
             return None
-
     res = []
     opers = []
     operators = {'+': 2, '-': 2, '*': 1, '/': 1}
@@ -148,7 +146,6 @@ def advanced_calculator(input_string):
                     opers.append(d1 * d2)
                 if el == '/':
                     opers.append(d1 / d2)
-
     except:
         return None
 
