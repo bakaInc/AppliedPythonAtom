@@ -49,6 +49,7 @@ def splitArr(arr):
 
 
 def advanced_calculator(input_string):
+    raise NotImplementedError
     if not is_bracket_correct(input_string):
         return None
 
