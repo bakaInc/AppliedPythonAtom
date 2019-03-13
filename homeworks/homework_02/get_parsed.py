@@ -1,8 +1,9 @@
 import json
 import csv
 
+
 def check_csv(filestream):
-    reader = csv.reader(filestream, delimiter = "\t")
+    reader = csv.reader(filestream, delimiter="\t")
     data = []
     last = 0
     i = 0
@@ -17,11 +18,11 @@ def check_csv(filestream):
         data.append(row)
     return data
 
+
 def check_json(filestream):
     data = []
     try:
         data_json = json.load(filestream)
-  
         data.append(list(data_json[0].keys()))
         for value in data_json:
             data.append(list(value.values()))
