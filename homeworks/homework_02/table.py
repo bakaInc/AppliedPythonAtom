@@ -1,6 +1,4 @@
-
 import sys
-
 
 from get_parsed import get_csv,get_json,check_format
 from encoding import get_c1251,get_utf_8,get_utf_16,get_encodeFile
