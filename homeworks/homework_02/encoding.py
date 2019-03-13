@@ -1,11 +1,14 @@
+
+
 def get_c1251(filename):
     try:
-        f = open(filename, "r",encoding="cp1251")
+        f = open(filename, "r", encoding="cp1251")
         f.read(1)
         f.seek(0)
     except UnicodeError:
         return 0
     return f
+
 
 def get_utf_8(filename):
     try:
@@ -26,13 +29,14 @@ def get_utf_16(filename):
         return 0
     return f
 
+
 def get_encodeFile(filename):
     try:
-        f = get_utf_8(filename) 
+        f = get_utf_8(filename)
         if(f):
             return f
         else:
-            f = get_utf_16(filename) 
+            f = get_utf_16(filename)
             if(f):
                 return f
             else:
