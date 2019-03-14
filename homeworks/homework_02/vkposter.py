@@ -12,13 +12,13 @@ class VKPoster:
         self.user_post = {}
         self.user_follow = {}
         self.posted_posts = {}
-
-     def user_posted_post(self, user_id: int, post_id: int):
+        
+    def user_posted_post(self, user_id: int, post_id: int):
          if user_id in self.user_post.keys():
              self.user_post[user_id].append(post_id)
          else:
              self.user_post[user_id] = [post_id]
-
+             
      def user_read_post(self, user_id: int, post_id: int):
          if post_id in self.posted_posts.keys():
              self.posted_posts[post_id].add(user_id)
@@ -47,3 +47,4 @@ class VKPoster:
              (len(self.posted_posts.get(input)[1]), input),
              reverse=True)
          return sorted_posts[:k:]
+
