@@ -23,7 +23,7 @@ class VKPoster:
         if post_id in self.posted_posts.keys():
             self.posted_posts[post_id].add(user_id)
         else:
-            self.posted_posts[post_id] = ["", [user_id]]
+            self.posted_posts[post_id] = [user_id]
 
     def user_follow_for(self, follower_user_id: int, followee_user_id: int):
         if follower_user_id in self.user_follow.keys():
@@ -44,6 +44,6 @@ class VKPoster:
         sorted_posts = list(self.user_post.keys())
         sorted_posts.sort(
             key=lambda input:
-            (len(self.posted_posts.get(input)[1]), input),
+            (len(self.user_post.get(input)[1]), input),
             reverse=True)
         return sorted_posts[:k:]
