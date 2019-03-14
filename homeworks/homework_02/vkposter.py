@@ -44,6 +44,6 @@ class VKPoster:
         sorted_posts = list(self.user_post.keys())
         sorted_posts.sort(
             key=lambda input:
-            (len(self.user_post.get(input)[1]), input),
+            (len(list(self.user_post.get(input)[1])), input),
             reverse=True)
         return sorted_posts[:k:]
