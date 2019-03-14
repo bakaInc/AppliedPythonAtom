@@ -6,6 +6,6 @@ from printtable import print_table
 
 if __name__ == '__main__':
     filename = sys.argv[1]
-
     data = check_format(get_encodeFile(filename))
-	print_table(data)
+    print_table(data)
+
