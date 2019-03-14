@@ -42,7 +42,7 @@ class VKPoster:
         return recent_post[:k]
 
     def get_most_popular_posts(self, k: int) -> list:
-        sorted_posts = list(self.posts.keys())
+        sorted_posts = list(self.posted_posts.keys())
         sorted_posts.sort(
             key=lambda input:
             (len(self.posted_posts.get(input)[1]), input),
