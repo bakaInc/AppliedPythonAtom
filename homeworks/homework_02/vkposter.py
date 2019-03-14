@@ -43,12 +43,12 @@ class VKPoster:
 
     def get_most_popular_posts(self, k: int) -> list:
         def sortkey(input):
-            if type(self.posted_posts.get(input)[1] is int):
+            if type(self.user_post.get(input)[1] is int):
                 return 1, input
             else:
-                return len(self.posted_posts.get(input)[1]), input
-            
-        sorted_posts = list(self.posted_posts.keys())
+                return len(self.user_post.get(input)[1]), input
+
+        sorted_posts = list(self.user_post.keys())
         sorted_posts.sort(
             key=sortkey,
             reverse=True)
