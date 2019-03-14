@@ -23,7 +23,7 @@ class VKPoster:
         if post_id in self.posted_posts.keys():
             self.posted_posts[post_id].add(user_id)
         else:
-            self.posted_posts[post_id] = [user_id]
+            self.posted_posts[post_id] = set([user_id])
 
     def user_follow_for(self, follower_user_id: int, followee_user_id: int):
         if follower_user_id in self.user_follow.keys():
