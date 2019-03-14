@@ -47,4 +47,3 @@ class VKPoster:
              (len(self.posted_posts.get(input)[1]), input),
              reverse=True)
          return sorted_posts[:k:]
-
