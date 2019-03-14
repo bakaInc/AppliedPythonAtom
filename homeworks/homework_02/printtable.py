@@ -15,7 +15,7 @@ def print_table(data):
         print('|', end='')
         for j in range(len(data[i])):
             if j == (len(data[i]) - 1):
-                print(" " * (maxCol[mk] - len(str(data[i][j])) + 1),end='')
+                print(" " * (maxCol[mk] - len(str(data[i][j])) + 1), end='')
                 print(data[i][j], " |", end='')
             else:
                 print(" ", data[i][j], end='')
