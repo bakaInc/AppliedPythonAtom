@@ -33,23 +33,4 @@ class VKPoster:
             self.user_follow[follower_user_id] = [followee_user_id]
 
     def get_recent_posts(self, user_id: int, k: int) -> list:
-        recent_post = []
-        for user in self.user_follow[user_id]:
-            if user in self.user_post.keys():
-                for i in self.user_post[user]:
-                    recent_post.append(i)
-        recent_post.sort(reverse=True)
-        return recent_post[:k]
-
-    def get_most_popular_posts(self, k: int) -> list:
-        def sortkey(input):
-            if type(self.user_post.get(input)[1] is int):
-                return 1, input
-            else:
-                return len(self.user_post.get(input)[1]), input
-
-        sorted_posts = list(self.user_post.keys())
-        sorted_posts.sort(
-            key=sortkey,
-            reverse=True)
-        return sorted_posts[:k:]
+        pass
